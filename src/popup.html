@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">Element Zapper</div>
+      <div class="site" id="site">—</div>
+    </header>
+
+    <main id="main" hidden>
+      <ul class="rules" id="rules"></ul>
+      <p class="empty" id="empty" hidden>No rules yet. Pick an element below.</p>
+
+      <div class="add">
+        <input id="selector" type="text" placeholder=".selector-here" spellcheck="false" autocomplete="off" />
+        <button id="add" type="button">Add</button>
+      </div>
+      <div class="hint" id="hint"></div>
+
+      <button id="pick" class="pick" type="button">🎯 Pick element on page</button>
+
+      <label class="toggle">
+        <input id="enabled" type="checkbox" />
+        <span>Enabled on this site</span>
+      </label>
+    </main>
+
+    <p class="unsupported" id="unsupported" hidden>
+      Element Zapper can't run on this page. Open a normal http(s) site and try again.
+    </p>
+
+    <script src="selector.js"></script>
+    <script src="storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

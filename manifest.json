@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Element Zapper",
+  "version": "1.0.0",
+  "description": "Hide elements you never want to see on sites you visit, using CSS selectors you pick yourself.",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_title": "Element Zapper",
+    "default_popup": "src/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/selector.js", "src/storage.js", "src/picker.js", "src/content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}

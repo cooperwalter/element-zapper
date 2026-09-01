@@ -1,0 +1,9 @@
+{
+  "name": "element-zapper",
+  "version": "1.0.0",
+  "description": "Chrome extension that hides chosen elements per site.",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
