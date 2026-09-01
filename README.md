@@ -35,6 +35,19 @@ One selector per CSS rule keeps a malformed selector from taking the rest of the
 
 It deliberately skips generated names that change on every deploy — `css-1x2y3z` (emotion), `sc-bdVaJa` (styled-components), `Button_root__2xY3z` (CSS modules), `ember1234`, `:r3:` (React `useId`) — and transient state classes like `active` or `is-open`.
 
+## Icons
+
+`icons/icon512.png` is the master. The four sizes Chrome loads are downscaled from it with Lanczos resampling:
+
+```
+uv run --with pillow python -c "
+from PIL import Image
+img = Image.open('icons/icon512.png').convert('RGBA')
+for s in (128, 48, 32, 16):
+    img.resize((s, s), Image.LANCZOS).save(f'icons/icon{s}.png', optimize=True)
+"
+```
+
 ## Tests
 
 ```
