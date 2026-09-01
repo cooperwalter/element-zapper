@@ -110,6 +110,8 @@
     els.site.title = siteKey;
     els.main.hidden = false;
 
+    askTab({ type: "EZ_STOP_PICK" });
+
     await renderRules();
 
     els.add.addEventListener("click", addCurrentSelector);

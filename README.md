@@ -13,7 +13,8 @@ Hides elements you never want to see, per site, using CSS selectors you pick you
 
 Open the popup on any site:
 
-- **🎯 Pick element on page** — click the thing you want gone. Stays active so you can zap several in a row; `↑`/`↓` grow or shrink the selection before you click, `Esc` finishes.
+- **🎯 Pick element on page** — click the thing you want gone. Stays active so you can zap several in a row; `↑`/`↓` grow or shrink the selection before you click.
+  Picking mode exits on `Esc`, when the page loses focus, or when you reopen the popup by clicking the toolbar icon — so it can never be left running invisibly, swallowing your clicks.
 - **Type a selector** — paste one from DevTools. The popup shows a live match count and highlights the matches on the page before you commit.
 - **Enabled on this site** — toggle every rule for the current domain off and back on without deleting anything.
 

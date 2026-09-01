@@ -47,6 +47,13 @@
         sendResponse({ ok: true });
         return undefined;
 
+      case "EZ_STOP_PICK": {
+        const wasPicking = EZPicker.isActive();
+        EZPicker.stop();
+        sendResponse({ ok: true, wasPicking });
+        return undefined;
+      }
+
       case "EZ_START_PICK":
         EZPicker.start({
           siteKey,

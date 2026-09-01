@@ -120,8 +120,9 @@
   }
 
   function onKeyDown(event) {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" || event.key === "Esc") {
       event.preventDefault();
+      event.stopPropagation();
       stop();
       return;
     }
@@ -134,6 +135,10 @@
       event.preventDefault();
       setTarget(target.children[0]);
     }
+  }
+
+  function onKeyUp(event) {
+    if (event.key === "Escape" || event.key === "Esc") stop();
   }
 
   async function onClick(event) {
@@ -163,6 +168,9 @@
     document.addEventListener("mousemove", onMouseMove, true);
     document.addEventListener("click", onClick, true);
     document.addEventListener("keydown", onKeyDown, true);
+    window.addEventListener("keydown", onKeyDown, true);
+    window.addEventListener("keyup", onKeyUp, true);
+    window.addEventListener("blur", stop);
     window.addEventListener("scroll", onScroll, true);
 
     showToast("Click an element to hide it · ↑ ↓ to resize selection · Esc to finish", 4000);
@@ -173,6 +181,9 @@
     document.removeEventListener("mousemove", onMouseMove, true);
     document.removeEventListener("click", onClick, true);
     document.removeEventListener("keydown", onKeyDown, true);
+    window.removeEventListener("keydown", onKeyDown, true);
+    window.removeEventListener("keyup", onKeyUp, true);
+    window.removeEventListener("blur", stop);
     window.removeEventListener("scroll", onScroll, true);
 
     container.remove();
@@ -195,5 +206,9 @@
     }
   }
 
-  root.EZPicker = { start, stop, flash };
+  function isActive() {
+    return Boolean(session);
+  }
+
+  root.EZPicker = { start, stop, flash, isActive };
 })(typeof globalThis !== "undefined" ? globalThis : this);
